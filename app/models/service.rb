@@ -1,4 +1,4 @@
 class Service < ApplicationRecord
-  has_many :comments dependent: :destroy
-  belongs_to :handymen
+  has_many :comments, dependent: :destroy
+  belongs_to :handyman
 end

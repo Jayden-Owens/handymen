@@ -1,7 +1,8 @@
 import React from 'react';
+import { HeaderText } from '../styledComponents/appStyles'
 
 const About = () => (
-  <h1>About Page</h1>
+  <HeaderText>About Page</HeaderText>
 )
 
 export default About;

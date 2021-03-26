@@ -1,7 +1,8 @@
 import React from 'react';
+import { HeaderText } from '../styledComponents/appStyles'
 
 const NoMatch = () => (
-  <h1>Error 404: Page Not Found</h1>
+  <HeaderText>Error 404: Page Not Found</HeaderText>
 )
 
 export default NoMatch

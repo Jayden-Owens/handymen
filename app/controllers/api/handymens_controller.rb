@@ -1,16 +1,15 @@
 class Api::HandymensController < ApplicationController
-end
 
 def index 
-render json: Handymen.all
+render json: Handyman.all
 end
 
 def show
-render json: Handymen.find(params[:id])
+render json: Handyman.find(params[:id])
 end
 
 def create
-@handymen = Handymen.new(handymen_params)
+@handymen = Handyman.new(handymen_params)
 if @handymen.save
   render json: @handymen
 else
@@ -19,7 +18,7 @@ end
 end
 
 def update
-@handymen = Handymen.find(params[:id])
+@handymen = Handyman.find(params[:id])
 if @handymen.update(handymen_params)
   render json: @handymen
 else
@@ -27,7 +26,7 @@ else
 end
 end
 def destroy
-Handymen.find(params[:id]).destroy
+Handyman.find(params[:id]).destroy
 render json: { message: 'Handyman Item was deleted'}
 end
 
