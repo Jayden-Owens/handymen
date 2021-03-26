@@ -16,7 +16,7 @@ const NavBar = () => (
     </Link>  
     <Link to="/handymens">
       <Menu.Item>
-        Handy Man
+        Handy Men
       </Menu.Item>
     </Link>  
   </Menu>
