@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  price: 1.5
+  hours: 1.5
+  handymen: one
+
+two:
+  type: 
+  price: 1.5
+  hours: 1.5
+  handymen: two
