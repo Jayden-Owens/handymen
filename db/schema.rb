@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_060520) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "service_type"
+    t.string "type"
     t.float "price"
     t.float "hours"
     t.bigint "handymen_id", null: false
