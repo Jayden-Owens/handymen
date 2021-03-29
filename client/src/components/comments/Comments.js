@@ -1,0 +1,46 @@
+import { Component } from React;
+import axios from 'axios'
+import Comment from './Comment/'
+
+class Comments extends Component {
+    state = { comments: [] }
+
+    componentDidMount() {
+        const { serviceId } = this.props
+        axios.get(`/api/services/${serviceId}/comments`)
+          .then( res => {
+            this.setState({ comments: res.data })
+          })
+          .catch( err => console.log(err))
+      }
+    addPost = (Comment) => {
+        const { serviceId } = this.props
+        axios.comment(`/api/services/${serviceId}/comments`, { Comment })
+          .then( res => {
+            const { comments } = this.state 
+            this.setState({ comments: [...comments, res.data ]})
+          })
+          .catch( err => console.log(err))
+      }
+    deleteComment = (id) => {
+        const { serviceId } = this.props
+        axios.delete(`/api/services/${serviceId}/comments/${id}`)
+          .then( res => {
+            const { comments } = this.state 
+            this.setState({ comments: comments.filter( c => c.id !== id )})
+          })
+          .catch( err => console.log(err))
+      }
+    
+      render() {
+        const { comments } = this.state
+        return (
+          <>
+            { comments.map( p => 
+              <Post key={c.id} {...c} deleteComment={this.deleteComment} />
+            )}
+          </>
+        )
+      }
+    
+}
