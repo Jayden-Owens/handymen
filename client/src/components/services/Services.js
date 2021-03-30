@@ -18,7 +18,7 @@ class Services extends Component {
         const { handymenId } = this.props
         axios.post(`/api/handymens/${handymenId}/services`, { service })
             .then( res => {
-                const { services = this.state}
+                const { services }= this.state
                 this.setState({ services: [...services, res.data ]})
             })
             .catch( err => console.log(err))
