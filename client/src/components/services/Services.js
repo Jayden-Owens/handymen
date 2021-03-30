@@ -7,7 +7,7 @@ class Services extends Component {
 
     componentDidMount () {
         const { handymenId } = this.props
-        axios.get('/api/handymens/${handymenId}/services')
+        axios.get(`/api/handymens/${handymenId}/services`)
             .then( res => {
                 this.setState({ services: res.data })
             })
@@ -16,7 +16,7 @@ class Services extends Component {
 
     addService = ( service ) => {
         const { handymenId } = this.props
-        axios.post('/api/handymens/${handymenId}/services', { service })
+        axios.post(`/api/handymens/${handymenId}/services`, { service })
             .then( res => {
                 const { services = this.state}
                 this.setState({ services: [...services, res.data ]})
@@ -26,7 +26,7 @@ class Services extends Component {
 
     deletePost = (id) => {
         const {handymenId} = this.props
-        axios.delete('/api/handymens/${blogId}/services/${id}')
+        axios.delete(`/api/handymens/${handymenId}/services/${id}`)
             .then( res => {
                 const { services } = this.state
                 this.setState({ services: services.filter( s => s.id !== id)})

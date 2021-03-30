@@ -14,11 +14,11 @@ const NavBar = () => (
         About
       </Menu.Item>
     </Link>  
-    <Link to="./handymens/Handymens">
+    <Link to="./handymens">
       <Menu.Item>
         Handy Men
       </Menu.Item>
-    </Link>  
+    </Link>   
   </Menu>
 )
 
