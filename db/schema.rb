@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_060520) do
+ActiveRecord::Schema.define(version: 2021_03_30_054402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
-    t.string "body"
+    t.text "body"
     t.integer "rating"
     t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2021_03_26_060520) do
     t.string "service_type"
     t.float "price"
     t.float "hours"
-    t.bigint "handymen_id", null: false
+    t.bigint "handyman_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["handymen_id"], name: "index_services_on_handymen_id"
+    t.index ["handyman_id"], name: "index_services_on_handyman_id"
   end
 
   add_foreign_key "comments", "services"
-  add_foreign_key "services", "handymen", column: "handymen_id"
+  add_foreign_key "services", "handymen"
 end

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
-import Service from './service';
+import Service from './Service';
 
 class Services extends Component {
     state = { services: [] }
@@ -18,13 +18,13 @@ class Services extends Component {
         const { handymenId } = this.props
         axios.post(`/api/handymens/${handymenId}/services`, { service })
             .then( res => {
-                const { services }= this.state
+                const { services } = this.state
                 this.setState({ services: [...services, res.data ]})
             })
             .catch( err => console.log(err))
     } 
 
-    deletePost = (id) => {
+    deleteService = (id) => {
         const {handymenId} = this.props
         axios.delete(`/api/handymens/${handymenId}/services/${id}`)
             .then( res => {
@@ -39,7 +39,7 @@ class Services extends Component {
         return (
             <>
             { services.map( s =>
-                <Service key={s.id} {...s} deletePost={this.deleteService} />
+                <Service key={s.id} {...s} deleteService={this.deleteService} />
                 )}
             </>
         )

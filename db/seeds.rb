@@ -12,7 +12,7 @@ rating_range = (1..5).to_a
       service_type: Faker::Games::Pokemon.move,
       price: price_range.sample,
       hours: hours_range.sample,
-      handymen_id: handymen.id
+      handyman_id: handymen.id
     )
     5.times do
       Comment.create(

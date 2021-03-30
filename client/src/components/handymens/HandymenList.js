@@ -1,15 +1,20 @@
 import React from 'react';
 import Handymen from './Handymen'
+import { Card } from 'semantic-ui-react'
 
-const HandymenList = ({handymens}) => (
-  <div>
+const HandymenList = ({handymens, deleteHandymen, updateHandymen}) => (
+  <Card.Group>
     {handymens.map (h =>
-      <Handymen
-        key={h.id}
-        {...h}
-      />
+      <Card>
+        <Handymen
+          key={h.id}
+          {...h}
+          deleteHandymen={deleteHandymen}
+          updateHandymen={updateHandymen}
+        />
+      </Card>
       )}
-  </div>
+  </Card.Group>
 )
 
 export default HandymenList
