@@ -2,7 +2,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
   def change
     create_table :comments do |t|
       t.string :title
-      t.string :body
+      t.text :body
       t.integer :rating
       t.belongs_to :service, null: false, foreign_key: true
 

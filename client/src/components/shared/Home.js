@@ -8,7 +8,7 @@ const Home = () => (
     <HeaderText>Welcome to the Handy Man App!</HeaderText>
     <SubText>Click on the icon below to enter the Handy Man App</SubText><br/>
     <div style={{textAlign: 'center'}}>
-      <Link to="/handymens"><Icon link name="user secret" size="massive"/></Link>
+      <Link to="/handymen"><Icon link name="user secret" size="massive"/></Link>
     </div>
   </Container>
 )

@@ -14,7 +14,7 @@ const NavBar = () => (
         About
       </Menu.Item>
     </Link>  
-    <Link to="./handymens">
+    <Link to="/handymen">
       <Menu.Item>
         Handy Men
       </Menu.Item>

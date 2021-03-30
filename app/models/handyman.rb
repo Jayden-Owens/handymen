@@ -1,3 +1,3 @@
 class Handyman < ApplicationRecord
-    has_many :services, dependent: :destroy
+  has_many :services, dependent: :destroy
 end

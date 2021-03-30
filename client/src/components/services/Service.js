@@ -1,4 +1,4 @@
-const Service = ({type, price, hours}) => {
+const Service = ({type, price, hours, deleteService, id}) => {
     return (
         <>
             <h1>{type}</h1>
@@ -11,3 +11,5 @@ const Service = ({type, price, hours}) => {
         </>
     )
 }
+
+export default Service

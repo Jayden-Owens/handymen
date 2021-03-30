@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  body: MyString
+  body: MyText
   rating: 1
   service: one
 
 two:
   title: MyString
-  body: MyString
+  body: MyText
   rating: 1
   service: two
