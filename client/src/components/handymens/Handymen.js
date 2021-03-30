@@ -3,6 +3,7 @@ import { SubText } from '../styledComponents/appStyles'
 import { Link } from 'react-router-dom'
 import { Card, Button } from 'semantic-ui-react';
 
+
 const Handymen = ({ id, name, specialty, deleteHandymen}) => {
   return(
     <>
