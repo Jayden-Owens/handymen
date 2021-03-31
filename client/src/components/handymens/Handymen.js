@@ -1,33 +1,61 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { SubText } from '../styledComponents/appStyles'
 import { Link } from 'react-router-dom'
 import { Card, Button } from 'semantic-ui-react';
+import Services from '../services/Services'
+import HandymenForm from './HandymenForm';
 
+class Handymen extends Component {
 
-const Handymen = ({ id, name, specialty, deleteHandymen}) => {
+  state = {editing: false}
+
+  toggleEdit = () => {
+    const { editing } = this.state
+    this.setState({editing: !editing})
+  }
+
+  render () {
+    const { editing } = this.state
+    const { id, name, specialty, deleteHandymen} = this.props
+
   return(
+    
     <>
       <Card.Content>
-        <Card.Header>Name: {name}</Card.Header>
-        <Card.Meta>Specialty: {specialty}</Card.Meta>
-        <Button>
+        <Card.Header>{name}</Card.Header>
+        <Card.Meta>Specialty: {specialty}</Card.Meta><br/>
+        <Button
+        
+        >
           <Link
             to={{
-              pathname: `/handymen/${id}/services`
+              pathname: `/handymen/${id}/services`,
+              state: {handymenId: id}
             }}
           >
             View Services Offered
           </Link>
-        </Button>
+        </Button><hr/>
         <Button
           onClick={() => deleteHandymen(id)}
+          color="red"
         >
-          Delete : {id}
+          Delete
         </Button>
+
+        { editing ?
+          <HandymenForm {...this.props} toggleEdit={this.toggleEdit} />
+          :
+          <Button
+          onClick={() => this.toggleEdit()}
+          color="blue"
+          >
+          Update
+        </Button>
+        }
       </Card.Content>
       <hr/>
     </>
-  )
+  )}
 }
-
 export default Handymen

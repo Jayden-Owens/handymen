@@ -1,16 +1,16 @@
 class Api::ServicesController < ApplicationController
-    before_action :set_handymen
+    before_action :set_handyman
     before_action :set_service, except: [:index, :create]
     def index 
-        render json: @handymen.services
+        render json: @handyman.services
     end
 
     def show 
-        render json: @Service
+        render json: @service
     end
 
     def create
-        @services = @handymen.services.new(service_params)
+        @service = @handyman.services.new(service_params)
         if @service.save
             render json: @service
         else
@@ -37,7 +37,7 @@ class Api::ServicesController < ApplicationController
             params.require(:service).permit(:type, :price, :hours)
         end
 
-        def set_handymen
-            @handymen = Handymen.find(params [:handymen_id])
+        def set_handyman
+            @handyman = Handyman.find(params[:handyman_id])
         end
 end

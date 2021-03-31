@@ -6,7 +6,13 @@ class HandymenForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addHandymen(this.state);
+    if (this.props.id) {
+      const { updateHandymen, toggleEdit } = this.props
+      updateHandymen(this.props.id, this.state)
+      toggleEdit()
+    } else {
+      this.props.addHandymen(this.state);
+    }
     this.setState({ name: '', specialty: ''})
   }
 
@@ -14,11 +20,18 @@ class HandymenForm extends Component {
     this.setState({ [e.target.name]: e.target.value})
   }
 
+  componentDidMount() {
+    if (this.props.id) {
+      const { id, name, specialty } = this.props
+      this.setState({ id, name, specialty })
+    }
+  }
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Input
-          label="HandymanName"
+          label="Name"
           placeholder="Add name of Handy Man"
           required
           name="name"
@@ -26,14 +39,14 @@ class HandymenForm extends Component {
           onChange={this.handleChange}
         />
         <Form.Input
-          label="HandymanSpecialty"
+          label="Specialty"
           placeholder="Add specialty of Handy Man"
           required
           name="specialty"
           value={this.state.specialty}
           onChange={this.handleChange}
         />
-        <Form.Button>Submit</Form.Button>
+        <Form.Button color="green">Submit</Form.Button>
       </Form>
     )
   }

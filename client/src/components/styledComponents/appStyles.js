@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header} from 'semantic-ui-react';
+import { Header, Container } from 'semantic-ui-react';
 
 export const HeaderText = styled(Header)`
   text-align: center;
@@ -8,4 +8,12 @@ export const HeaderText = styled(Header)`
 
 export const SubText = styled.h3`
   text-align: center;
+`
+
+export const CardContainer = styled(Container)`
+  text-align: center;
+`
+
+export const FormContainer = styled(Container)`
+  padding: 0px 110px;
 `
