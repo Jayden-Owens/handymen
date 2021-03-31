@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { HeaderText, SubText } from '../styledComponents/appStyles';
+import { FormContainer, HeaderText, SubText } from '../styledComponents/appStyles';
 import HandymenList from './HandymenList'
 import HandymenForm from './HandymenForm'
 import axios from 'axios'
+import { Container } from 'semantic-ui-react'
+import { CardContainer } from '../styledComponents/appStyles'
+
 
 class Handymens extends Component {
   state = { handymens: [] }
@@ -28,9 +31,18 @@ class Handymens extends Component {
       })
   }
 
-  updateHandymen = (id) => {
+  updateHandymen = (id, handymen) => {
     // TODO make api call to update todo
     // TODO update state
+    axios.put(`/api/handymen/${id}`, { handymen })
+      .then( res => {
+        const handymens = this.state.handymens.map( h => {
+          if (h.id === id)
+            return res.data
+          return h;
+        });
+        this.setState({ handymens })
+      })
   }
 
   deleteHandymen = (id) => {
@@ -44,19 +56,26 @@ class Handymens extends Component {
 
   render() {
     const { handymens } = this.state
-    console.log(handymens)
     return (
       <>
-        <HeaderText>Handy Men</HeaderText>
-        <SubText>Add Handy Man</SubText>
-        <HandymenForm 
-          addHandymen={this.addHandymen}
-        />
-        <HandymenList
-          handymens={handymens}
-          deleteHandymen={this.deleteHandymen}
-          updateHandymen={this.updateHandymen}
-        />
+        <Container>
+          <HeaderText>Handy Men</HeaderText>
+          <FormContainer>
+            <SubText>Add Handy Man</SubText>
+            <HandymenForm 
+              addHandymen={this.addHandymen}
+              updateHandymen={this.updateHandymen}
+            />
+          </FormContainer>
+          <br/>
+          <CardContainer>
+            <HandymenList
+              handymens={handymens}
+              deleteHandymen={this.deleteHandymen}
+              updateHandymen={this.updateHandymen}
+            />
+          </CardContainer>
+        </Container>
       </>
     )
   }

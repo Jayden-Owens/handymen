@@ -1,9 +1,10 @@
 import React from 'react';
 import Handymen from './Handymen'
 import { Card } from 'semantic-ui-react'
+import { CardInfoContainer } from '../styledComponents/appStyles'
 
 const HandymenList = ({handymens, deleteHandymen, updateHandymen}) => (
-  <Card.Group>
+  <Card.Group centered>
     {handymens.map (h =>
       <Card>
         <Handymen

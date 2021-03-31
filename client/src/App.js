@@ -5,7 +5,7 @@ import About from './components/shared/About';
 import NoMatch from './components/shared/NoMatch';
 import NavBar from './components/shared/NavBar';
 import Handymens from './components/handymens/Handymens'
-import Handymen from './components/handymens/Handymen'
+
 import Services from './components/services/Services'
 
 const App = () => (
