@@ -1,10 +1,11 @@
-const Comment = ({ title, body, rating}) => {
+import Comments from "./Comments";
+const Comment = ({ title, body, rating, deleteComment}) => {
     return (
         <>
             <h1>{title}</h1>
             <h3>what is your rating? </h3>
             <p>{body}</p>
-            <button onClick={() => deletePost(id)}>
+            <button onClick={() => deleteComment()}>
                 Delete
             </button>
         </>

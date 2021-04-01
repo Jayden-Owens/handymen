@@ -34,7 +34,7 @@ class Api::ServicesController < ApplicationController
 
     private
         def service_params
-            params.require(:service).permit(:type, :price, :hours)
+            params.require(:service).permit(:type, :price, :hours, :id)
         end
 
         def set_handyman

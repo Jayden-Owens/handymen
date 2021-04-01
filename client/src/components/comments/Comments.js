@@ -1,21 +1,25 @@
-import { Component } from React;
-import axios from 'axios'
-import Comment from './Comment/'
+import React, { Component } from 'react';
+import axios from 'axios';
+import CommentForm from './CommentForm';
+import Comment from './Comment';
+import Services from '../services/Services';
+
 
 class Comments extends Component {
-    state = { comments: [] }
+    state = { comments: []};
 
     componentDidMount() {
-        const { serviceId } = this.props
-        axios.get(`/api/services/${serviceId}/comments`)
+      const { servicesId } = this.props.location
+        axios.get(`/api/services/${servicesId}/comments`)
           .then( res => {
             this.setState({ comments: res.data })
           })
           .catch( err => console.log(err))
       }
-    addPost = (Comment) => {
-        const { serviceId } = this.props
-        axios.comment(`/api/services/${serviceId}/comments`, { Comment })
+      
+    addComment = (Comment) => {
+        const { servicesId } = this.props
+        axios.comment(`/api/services/${servicesId}/comments`, { Comment })
           .then( res => {
             const { comments } = this.state 
             this.setState({ comments: [...comments, res.data ]})
@@ -23,8 +27,8 @@ class Comments extends Component {
           .catch( err => console.log(err))
       }
     deleteComment = (id) => {
-        const { serviceId } = this.props
-        axios.delete(`/api/services/${serviceId}/comments/${id}`)
+        const { servicesId } = this.props
+        axios.delete(`/api/services/${servicesId}/comments/${id}`)
           .then( res => {
             const { comments } = this.state 
             this.setState({ comments: comments.filter( c => c.id !== id )})
@@ -34,13 +38,15 @@ class Comments extends Component {
     
       render() {
         const { comments } = this.state
+        const { servicesId } = this.props.location
         return (
           <>
-            { comments.map( p => 
-              <Post key={c.id} {...c} deleteComment={this.deleteComment} />
+            { comments.map( c => 
+              <Comments key={c.id} {...c} deleteComment={this.deleteComment} />
             )}
           </>
         )
       }
     
 }
+export default Comments

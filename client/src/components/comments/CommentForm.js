@@ -1,66 +1,65 @@
 import { Component } from 'react';
-import {Form} 
-import Comments from './Comments';
+import { Form } from 'semantic-ui-react';
+import Comments from '../comments/Comments';
 
 
 class CommentForm extends Component {
+  state = { title: "", body: "", rating: "" };
 
+  componentDidMount() {
+    if (this.props.id) {
+      const { id, title, body, rating } = this.props;
+      this.setState({ id, title, body, rating });
+    }
+  }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value})
-  }
-  handleSubmit = (e) => {
-    e.preventDefault()
-    if (this.props.id) {
-      const { updateComment, id, toggleForm } = this.props 
-      updateComment(id, this.state)
-      this.setState({ title: "", body: "", rating: "" })
-      toggleForm()
-    } else {
-     
-      this.props.addComment(this.state)
-    }
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.props.id) {
+      const { updateComment, id, toggleForm } = this.props;
+      updateComment(id, this.state);
+      toggleForm();
+    } else {
+      this.props.addComment(this.state);
+    }
+    this.setState({ title: "", body: "", rating: "" });
+  };
   render() {
+    const { title, body, rating } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Input
-          label="Title"
-          placeholder="Title of Comment"
-          required
+          type="text"
           name="title"
-          value={this.state.title}
+          value={title}
           onChange={this.handleChange}
+          required
+          placeholder="title"
+        />
+        <Form.TextArea
+          type="text"
+          name="body"
+          value={body}
+          onChange={this.handleChange}
+          required
+          placeholder="Text"
         />
         <Form.Input
-          label="Review"
-          placeholder="Review of Service"
-          required
-          name="body"
-          value={this.state.body}
+          type="text"
+          name="rating"
+          value={rating}
           onChange={this.handleChange}
+          required
+          placeholder="rating"
         />
-          <Form.Select 
-        name="rating"
-        value={rating}
-        onChange={(e, { value}) => this.state.rating(value)}
-        label="Rating for Service"
-        options={reviewopts}
-      />
-  )
-}
-const reviewopts = [
-  { key: "1", text: "1 Star", value: 1 },
-  { key: "2", text: "2 Star", value: 2 },
-  { key: "3", text: "3 Star", value: 3 },
-  { key: "4", text: "4 Star", value: 4 },
-  { key: "5", text: "5 Star", value: 5 },
-]
-
-        <Form.Button>Submit</Form.Button>
+        <button type="submit">Submit</button>
       </Form>
-    )
+    );
   }
 }
-
 export default CommentForm;
