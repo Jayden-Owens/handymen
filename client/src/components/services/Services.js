@@ -13,7 +13,7 @@ class Services extends Component {
     }
 }
     addService = ( service ) => {
-        const { handymenId } = this.props
+        const { handymenId } = this.props.location.state
         axios.post(`/api/handymen/${handymenId}/services`, { service })
             .then( res => {
                 const { services } = this.state
@@ -22,7 +22,7 @@ class Services extends Component {
             .catch( err => console.log(err))
     } 
     deleteService = (id) => {
-        const {handymenId} = this.props
+        const {handymenId} = this.props.location.state
         axios.delete(`/api/handymen/${handymenId}/services/${id}`)
             .then( res => {
                 const { services } = this.state
