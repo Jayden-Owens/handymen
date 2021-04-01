@@ -25,7 +25,7 @@ class Comment extends Component {
         <>
             <h1>{service_type}</h1>
             <h1>{title}</h1>
-            <h3>{rating}} </h3>
+            <h3>{rating} </h3>
             <p>{body}</p>
             <button
           onClick={() => deleteComment(id)}

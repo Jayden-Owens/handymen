@@ -50,7 +50,7 @@ class CommentForm extends Component {
           placeholder="Text"
         />
         <Form.Input
-          type="text"
+          type="<NumericInput min={1} max={5} value={1}/>"
           name="rating"
           value={rating}
           onChange={this.handleChange}
@@ -59,6 +59,14 @@ class CommentForm extends Component {
         />
         <button type="submit">Submit</button>
       </Form>
+
+
+
+
+
+
+
+
     );
   }
 }
