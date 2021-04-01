@@ -9,6 +9,7 @@ import Reviews from './components/shared/Reviews';
 import Services from './components/services/Services';
 import Comments from './components/comments/Comments';
 
+
 const App = () => (
   <>
     <NavBar />

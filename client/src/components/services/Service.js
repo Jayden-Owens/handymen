@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom'
+import { Card, Button } from 'semantic-ui-react';
+
 const Service = ({service_type, price, hours, deleteService, id}) => {
     return (
         <>
             <h1>{service_type}</h1>
             <h3>${price}</h3>
             <h4>{hours}</h4>
-            <button onClick={() => deleteService(id)}>
+            <Button onClick={() => deleteService(id)}>
                 Delete Service
-            </button>
+            </Button>
+
+            <Button>
             <Link
             to={{
               pathname: `/services/${id}/comments`,
               state: {serviceId: id, service_type}
             }}
-          ><br></br>
+          >
             View Reviews
           </Link>
-        
+          </Button>
 
         </>
     )
