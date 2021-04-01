@@ -39,10 +39,10 @@ class Api::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @service.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params
-    params.require(:comment).permit(:title, :body, :rating)
+    params.require(:comment).permit(:title, :body, :rating, :service_id)
   end
 end

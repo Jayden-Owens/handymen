@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Rating } from 'semantic-ui-react';
 import Comments from '../comments/Comments';
 
 
@@ -21,9 +21,9 @@ class CommentForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.id) {
-      const { updateComment, id, toggleForm } = this.props;
+      const { updateComment, id, toggleEdit } = this.props;
       updateComment(id, this.state);
-      toggleForm();
+      toggleEdit();
     } else {
       this.props.addComment(this.state);
     }

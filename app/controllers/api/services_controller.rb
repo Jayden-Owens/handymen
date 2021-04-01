@@ -28,16 +28,21 @@ class Api::ServicesController < ApplicationController
     end
 
     def destroy
+        
         @service.destroy
         render json: { message: 'post deleted' }
     end
 
     private
         def service_params
-            params.require(:service).permit(:type, :price, :hours, :id)
+            params.require(:service).permit(:type, :price, :hours)
         end
 
         def set_handyman
             @handyman = Handyman.find(params[:handyman_id])
+        end
+
+        def set_service
+            @service = @handyman.services.find(params[:id])
         end
 end

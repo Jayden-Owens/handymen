@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-
 const Service = ({service_type, price, hours, deleteService, id}) => {
     return (
         <>
@@ -11,11 +10,11 @@ const Service = ({service_type, price, hours, deleteService, id}) => {
             </button>
             <Link
             to={{
-              pathname: `/services/${id}/comments/`,
-              state: {ServiceId: id}
+              pathname: `/services/${id}/comments`,
+              state: {serviceId: id, service_type}
             }}
           ><br></br>
-            View Comments
+            View Reviews
           </Link>
         
 

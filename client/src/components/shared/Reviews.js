@@ -12,6 +12,7 @@ const Reviews = (handymens, services, rating ) => (
     <HeaderText>Reviews</HeaderText>
     <SubText>Handy Many Below to See his Reviews</SubText><br/>
     <div style={{textAlign: 'center'}}>
+      
     
       
     </div>
