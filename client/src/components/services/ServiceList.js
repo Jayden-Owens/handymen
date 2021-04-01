@@ -5,8 +5,8 @@ const ServiceList = ({services}) => (
   <div>
     {services.map (h =>
       <Service
-        key={s.id}
-        {...s}
+        key={h.id}
+        {...h}
       />
       )}
   </div>
