@@ -35,6 +35,7 @@ class Handymen extends Component {
           >
             View Services Offered
           </Link>
+         
         </Button><hr/>
         <Button
           onClick={() => deleteHandymen(id)}

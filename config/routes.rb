@@ -3,11 +3,9 @@ Rails.application.routes.draw do
     resources :handymen do
       resources :services
     end
+      resources :services do
+        resources :comments
+
+    end
   end
-
-  resources :services do
-    resources :comments
-
-  end
-
 end

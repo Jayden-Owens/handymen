@@ -1,19 +1,17 @@
 import { Component } from 'react';
 import axios from 'axios';
 import Service from './Service';
-
 class Services extends Component {
     state = { services: [] }
-
     componentDidMount () {
-        const { handymenId } = this.props.location.state
-        axios.get(`/api/handymen/${handymenId}/services`)
+     if (this.props.match) { 
+        axios.get(`/api/handymen/${this.props.match.params.id}/services`)
             .then( res => {
                 this.setState({ services: res.data })
             })
             .catch( err => console.log(err))
     }
-
+}
     addService = ( service ) => {
         const { handymenId } = this.props.location.state
         axios.post(`/api/handymen/${handymenId}/services`, { service })
@@ -23,7 +21,6 @@ class Services extends Component {
             })
             .catch( err => console.log(err))
     } 
-
     deleteService = (id) => {
         const {handymenId} = this.props.location.state
         axios.delete(`/api/handymen/${handymenId}/services/${id}`)
@@ -33,11 +30,9 @@ class Services extends Component {
             })
             .catch( err => console.log(err))
     }
-
     render() {
         const { services } = this.state
         const { handymenId } = this.props.location.state
-
         return (
             <>
             { services.map( s =>

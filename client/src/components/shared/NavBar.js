@@ -19,7 +19,12 @@ const NavBar = () => (
         Handy Men
       </Menu.Item>
     </Link>   
-  </Menu>
+  <Link to="/reviews">
+  <Menu.Item>
+    Reviews
+  </Menu.Item>
+</Link>   
+</Menu>
 )
 
 export default NavBar

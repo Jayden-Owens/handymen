@@ -46,3 +46,4 @@ class Api::ServicesController < ApplicationController
             @service = @handyman.services.find(params[:id])
         end
 end
+
