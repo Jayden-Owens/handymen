@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Comments from "./Comments";
 import CommentForm from "./CommentForm"
 import { Rating } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react';
 
 class Comment extends Component {
 
@@ -24,25 +25,25 @@ class Comment extends Component {
 
         <>
             <h1>{service_type}</h1>
-            <h1>{title}</h1>
-            <h3>{rating} </h3>
+            <h3>{title}</h3>
+            <h3>Rating: {rating} </h3>
             <p>{body}</p>
-            <button
+            <Button
           onClick={() => deleteComment(id)}
           color="red"
         >
           Delete
-                </button>
+                </Button>
 
                 { editing ?
                 <CommentForm {...this.props} toggleEdit={this.toggleEdit} />
                 :
-                <button
+                <Button
                 onClick={() => this.toggleEdit()}
                 color="blue"
                 >
                 Update
-                </button>
+                </Button>
                 }
         </>
     )
