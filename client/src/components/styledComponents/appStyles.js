@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Header, Container } from 'semantic-ui-react';
 
+
 export const HeaderText = styled(Header)`
   text-align: center;
   font-size: 3rem !important;
