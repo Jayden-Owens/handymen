@@ -28,6 +28,7 @@ class Api::ServicesController < ApplicationController
     end
 
     def destroy
+        
         @service.destroy
         render json: { message: 'post deleted' }
     end
@@ -39,5 +40,9 @@ class Api::ServicesController < ApplicationController
 
         def set_handyman
             @handyman = Handyman.find(params[:handyman_id])
+        end
+
+        def set_service
+            @service = @handyman.services.find(params[:id])
         end
 end
